@@ -1,0 +1,13 @@
+{
+  "name": "laravel6-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Justin Bellero <jpbellero@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "docker-compose up -d",
+    "stop": "docker-compose down --rmi local",
+    "ps": "docker-compose ps",
+    "peek": "docker-compose logs -f"
+  }
+}

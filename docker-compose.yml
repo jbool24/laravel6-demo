@@ -1,0 +1,51 @@
+version: '3.7'
+
+networks:
+  laravel_net:
+
+volumes:
+  laravel_mysqldb:
+
+services:
+  laravel:
+    # image: php:fpm-alpine
+    build: 
+      context: .
+      dockerfile: ./containers/laravel/Dockerfile
+    command: "php-fpm"
+    networks:
+      - laravel_net
+    volumes:
+      - ./laravel:/var/www/laravel:rw
+      - ./containers/laravel/php.ini:/usr/local/etc/php/php.ini
+    # depends_on:
+    #   - mysqldb
+  
+  nginx:
+    build: 
+      context: .
+      dockerfile: ./containers/nginx/Dockerfile
+      args:
+        - USER_ID=${USER_ID:-1000}
+        - GROUP_ID=${USER_ID:-1000}
+    networks:
+      - laravel_net
+    ports:
+      - "8000:80"
+    volumes:
+      - ./laravel:/var/www/laravel:rw
+      - ./logs:/var/log/nginx
+
+  # mysqldb:
+  #   image: mysql:8
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   ports:
+  #     - "30306:3306"
+  #   networks:
+  #     - laravel_net
+  #   volumes:
+  #     - ./configs/data/mysql:/var/lib/mysql
+  #     - ./configs/data/sqlite:/data/sqlite
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: laravel_dbuser
+  #     MYSQL_DATABASE: laravel_db
