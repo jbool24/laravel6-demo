@@ -13,5 +13,5 @@ RUN \
   && adduser -DHS -u ${USER_ID} -s /sbin/nologin -G www-data www-data \
   && echo "Created user: `getent passwd www-data`"
 
-
+WORKDIR /var/www/laravel
 VOLUME /var/www/laravel
