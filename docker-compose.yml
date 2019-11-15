@@ -35,6 +35,14 @@ services:
     volumes:
       - ./laravel:/var/www/laravel:rw
       - ./logs:/var/log/nginx
+      
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    networks:
+      - laravel_net
+    volumes:
+      - ./containers/data/redis:/data
 
   # mysqldb:
   #   image: mysql:8
