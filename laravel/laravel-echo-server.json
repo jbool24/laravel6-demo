@@ -1,0 +1,40 @@
+{
+    "authHost": "http://nginx",
+    "authEndpoint": "/broadcasting/auth",
+    "clients": [
+        {
+            "appId": "123456789",
+            "key": "65fa7ba83931c5052ed55d4b8f872bbe"
+        }
+    ],
+    "database": "redis",
+    "databaseConfig": {
+        "redis": {
+            "host": "redis",
+            "port": "6379"
+        },
+        "sqlite": {}
+    },
+    "devMode": true,
+    "host": null,
+    "port": "6001",
+    "protocol": "http",
+    "socketio": {
+        "transports": ["websocket"]
+    },
+    "secureOptions": 67108864,
+    "sslCertPath": "",
+    "sslKeyPath": "",
+    "sslCertChainPath": "",
+    "sslPassphrase": "",
+    "subscribers": {
+        "http": true,
+        "redis": true
+    },
+    "apiOriginAllow": {
+        "allowCors": true,
+        "allowOrigin": "*",
+        "allowMethods": "",
+        "allowHeaders": "*"
+    }
+}
