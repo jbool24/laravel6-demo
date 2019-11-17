@@ -8,6 +8,7 @@
     "start:dev": "docker-compose up -d",
     "stop": "docker-compose down --rmi local",
     "ps": "docker-compose ps",
-    "peek": "docker-compose logs -f"
+    "peek": "docker-compose logs -f",
+    "console": "docker-compose exec --user www-data laravel /bin/ash"
   }
 }
