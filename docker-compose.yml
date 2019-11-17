@@ -8,18 +8,18 @@ volumes:
 
 services:
   laravel:
-    # image: php:fpm-alpine
     build: 
       context: .
       dockerfile: ./containers/laravel/Dockerfile
     command: "php-fpm"
+    hostname: laravel
     networks:
       - laravel_net
     volumes:
       - ./laravel:/var/www/laravel:rw
       - ./containers/laravel/php.ini:/usr/local/etc/php/php.ini
-    # depends_on:
-    #   - mysqldb
+    depends_on:
+      - mysqldb
   
   nginx:
     build: 
@@ -28,32 +28,33 @@ services:
       args:
         - USER_ID=${USER_ID:-1000}
         - GROUP_ID=${USER_ID:-1000}
+    hostname: nginx
     networks:
       - laravel_net
     ports:
       - "8000:80"
     volumes:
       - ./laravel:/var/www/laravel:rw
-      - ./logs:/var/log/nginx
       
   redis:
     image: redis:alpine
     restart: on-failure
+    hostname: redis
     networks:
       - laravel_net
     volumes:
       - ./containers/data/redis:/data
 
-  # mysqldb:
-  #   image: mysql:8
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   ports:
-  #     - "30306:3306"
-  #   networks:
-  #     - laravel_net
-  #   volumes:
-  #     - ./configs/data/mysql:/var/lib/mysql
-  #     - ./configs/data/sqlite:/data/sqlite
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: laravel_dbuser
-  #     MYSQL_DATABASE: laravel_db
+  mysqldb:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "30306:3306"
+    hostname: mysqldb
+    networks:
+      - laravel_net
+    volumes:
+      - laravel_mysqldb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: laravel_dbuser
+      MYSQL_DATABASE: laravel_db
