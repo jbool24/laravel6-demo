@@ -8,7 +8,7 @@ __note__: This is assuming Docker and Docker-Composer are installed and this is 
 
 ### 1. Clone the project
 ```bash
-git clone https://
+git clone https://github.com/jbool24/laravel6-demo.git
 ```
 
 ### 2. Install dev dependencies
