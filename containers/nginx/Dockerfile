@@ -18,13 +18,14 @@ RUN \
   && rm /etc/nginx/conf.d/default.conf
 
 # Install php dependancies and Composer for laravel dependancies
-RUN apk update && apk add --no-cache nodejs npm yarn
+RUN apk update && apk add --no-cache nodejs npm yarn supervisor
 
 
 COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY containers/nginx/sites/* /etc/nginx/conf.d/
+COPY containers/nginx/supervisor/* /etc/supervisor.d/
 
 VOLUME /var/www/laravel
 VOLUME /var/log/nginx
 
-CMD ["nginx"]
+# CMD ["nginx"]
