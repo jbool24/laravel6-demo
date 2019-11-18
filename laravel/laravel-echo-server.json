@@ -1,5 +1,5 @@
 {
-    "authHost": "http://nginx",
+    "authHost": "http://localhost",
     "authEndpoint": "/broadcasting/auth",
     "clients": [
         {
@@ -17,7 +17,7 @@
     },
     "devMode": true,
     "host": null,
-    "port": "6001",
+    "port": "6002",
     "protocol": "http",
     "socketio": {
         "transports": ["websocket"]
