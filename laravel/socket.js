@@ -14,19 +14,24 @@ server.listen(6001, () => {
     console.log("Listening...");
 });
 
-redisClient.subscribe("laravel_database_jokes", (err, subCount) => {
-    if (err) return console.log(err);
+function subscribe(channels, cb) {
+    redisClient.subscribe(channels, (err, subCount) => {
+        if (err) return console.log(err);
 
-    if (subCount >= 1) {
-        redisClient.on("message", (c, m) => console.log(c, m));
-    }
-});
+        if (subCount >= 1) {
+            redisClient.on("message", (c, m) => cb(c, m));
+        }
+    });
+}
 
 io.on("connection", function(socket) {
     console.log("CONNECTED");
-    console.log("TODO SETUP REDIS CONNECTION");
 
-    socket.emit("jokes", { event: "UserJoked", hello: "world" });
+    socket.emit("jokes", { event: "UserJoked", joke: "Ready!" });
+
+    subscribe(["jokes", "laravel_database_jokes"], (c, m) => {
+        socket.emit(c, m);
+    });
 
     socket.on("jokes", function(data) {
         console.log(data);
