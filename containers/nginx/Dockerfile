@@ -17,6 +17,10 @@ RUN \
   && chown -R www-data:www-data /var/www \
   && rm /etc/nginx/conf.d/default.conf
 
+# Install php dependancies and Composer for laravel dependancies
+RUN apk update && apk add --no-cache nodejs npm yarn
+
+
 COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY containers/nginx/sites/* /etc/nginx/conf.d/
 

@@ -33,6 +33,7 @@ services:
       - laravel_net
     ports:
       - "8000:80"
+      - "6001:6001"
     volumes:
       - ./laravel:/var/www/laravel:rw
       
