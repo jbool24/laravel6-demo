@@ -19,10 +19,12 @@ function JokeBoard() {
     useEffect(() => {
         console.log("Component Setup");
 
+        socket.on("connect", e => console.log("Connected"));
         socket.on("jokes", data => console.log(data));
-        socket.on("laravel_database_jokes", data =>
-            msgHandler(JSON.parse(data))
-        );
+        socket.on("laravel_database_jokes", data => {
+            console.log(data);
+            msgHandler(JSON.parse(data));
+        });
 
         socket.connect();
 
