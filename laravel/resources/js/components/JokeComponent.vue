@@ -1,21 +1,20 @@
 <template>
-    <div class="mt-8 p-4">
+    <div class="mt-8 py-4">
         <details class="bg-black text-white" open>
             <summary class="bg-white text-black p-4 shadow-md">
-                Expand to see what others have heard...
+                {{ summary }}
             </summary>
 
-            <p class="px-4 py-2">
-                <span class="text-green-300">{{ $name ?? "anonymous" }}</span
-                >: {{ $joke ?? "" }}
-            </p>
+            <slot></slot>
         </details>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["joke"],
+    props: {
+        summary: String
+    },
     mounted() {
         console.log("Component mounted.");
     }
