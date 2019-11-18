@@ -5,8 +5,7 @@
 To test this demo do the following:
 
 You must have a __.env__ file in the /laravel/ directory to inform laravel about the DB connections
-and the BROADCAST_DRIVER should be redis for development. There is also a socket.js file that 
-needs to run seperately for the front end to receive broadcast events via socket.io
+and the BROADCAST_DRIVER should be redis for development.
 
 Service hostname variables need to match the hostnames inside the container network environemnt so
 
