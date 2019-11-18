@@ -10,3 +10,4 @@ if [ ! -d "/var/www/laravel/vendor" ]; then
   composer install;
 fi
 
+exec php-fpm
