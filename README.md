@@ -13,16 +13,16 @@ git clone https://github.com/jbool24/laravel6-demo.git
 
 ### 2. Install dev dependencies
   ```bash
-  npm install
+  cd laravel && npm install && npm run prod
   ```
 
   -or-
 
   ```bash
-  yarn install
+  cd laravel && yarn install && yarn prod
   ```
 
-### 3. Build and Run containers
+### 3. Build and Run containers ( Must be in project root )
   ```bash
   npm run start:dev
   ```
