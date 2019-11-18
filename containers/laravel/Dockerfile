@@ -15,6 +15,8 @@ RUN \
   && mkdir /var/www/laravel
 
 
+COPY ./containers/laravel/bootstrap.sh /scripts/bootstrap.sh
+
 WORKDIR /var/www/laravel
 
 # Install php dependancies and Composer for laravel dependancies
@@ -25,7 +27,11 @@ RUN apk update && apk add --no-cache nodejs npm yarn \
   && php composer-setup.php \
   && php -r "unlink('composer-setup.php');" \
   && mv /var/www/laravel/composer.phar /usr/local/bin/composer \
-  && alias composer="composer --no-cache" \
-  && yarn install
+  && alias composer="composer --no-cache"
+
+ENTRYPOINT [ "sh", "/scripts/bootstrap.sh" ]
+
 
 VOLUME /var/www/laravel
+
+CMD ["php-fpm"]

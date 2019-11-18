@@ -20,6 +20,7 @@ services:
       - ./containers/laravel/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mysqldb
+    container_name: dev_laravel
   
   nginx:
     build: 
@@ -29,6 +30,7 @@ services:
         - USER_ID=${USER_ID:-1000}
         - GROUP_ID=${USER_ID:-1000}
     hostname: nginx
+    command: "supervisord"
     networks:
       - laravel_net
     ports:
@@ -36,7 +38,9 @@ services:
       - "6001:6001"
     volumes:
       - ./laravel:/var/www/laravel:rw
-      
+      - ./containers/nginx/supervisord.conf:/etc/supervisord.conf
+    container_name: dev_nginx
+
   redis:
     image: redis:alpine
     restart: on-failure
@@ -45,6 +49,7 @@ services:
       - laravel_net
     volumes:
       - ./containers/data/redis:/data
+    container_name: dev_redis
 
   mysqldb:
     image: mysql:8
@@ -59,3 +64,4 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: laravel_dbuser
       MYSQL_DATABASE: laravel_db
+    container_name: dev_mysqldb
