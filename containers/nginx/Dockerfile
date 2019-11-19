@@ -5,7 +5,7 @@ ARG GROUP_ID=1000
 
 
 RUN \
-  if getent group www-data; then deluser www-data; fi\
+  if getent passwd www-data; then deluser www-data; fi\
   && if getent group www-data; then delgroup www-data; fi \
   && if [ -d "/home/www-data" ]; then rmdir /home/www-data; fi \
   && addgroup -g ${GROUP_ID} www-data \
