@@ -9,7 +9,7 @@ and the BROADCAST_DRIVER should be redis for development.
 
 Service hostname variables need to match the hostnames inside the container network environment so:
 
-```
+```bash
 REDIS_HOST=redis
 REDIS_CLIENT=predis # predis is the client for this demo
 ```
