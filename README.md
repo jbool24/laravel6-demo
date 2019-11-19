@@ -27,13 +27,13 @@ git clone https://github.com/jbool24/laravel6-demo.git
 ### 2. (Optional) Manual Install dev dependencies (composer and npm/yarn must be installed)
   __note__: laravel container will auto install js and php dependencies on first run if they are not present.
   ```bash
-  cd laravel && npm install && composer install && npm run prod
+  cd laravel && npm install && composer install
   ```
 
   -or-
 
   ```bash
-  cd laravel && yarn install && composer install && yarn prod
+  cd laravel && yarn install && composer install
   ```
 
 ### 3. Build and Run containers ( Must be in project root )
@@ -46,8 +46,34 @@ git clone https://github.com/jbool24/laravel6-demo.git
   ```bash
   yarn start:dev
   ```
+  
+### 4. [Re]Build frontend (node_modules must be present -- check this first if build fails)
+  __note__: laravel container will auto install js and php dependencies on first run if they are not present.
+  ```bash
+  cd laravel && npm run prod
+  ```
 
-### 4. Stop and cleanup
+  -or-
+
+  ```bash
+  cd laravel && yarn prod
+  ```
+  
+### 5. Run migrations to prime the DB
+
+  ```bash
+  cd laravel # if not located in /laravel/ dir
+  npm run migrate
+  ```
+
+  -or-
+
+  ```bash
+  cd laravel # if not located in /laravel/ dir
+  npm run migrate
+  ```
+
+### 6. Stop and cleanup
   ```bash
   npm run stop
   ```
