@@ -7,9 +7,12 @@ To test this demo do the following:
 You must have a __.env__ file in the /laravel/ directory to inform laravel about the DB connections
 and the BROADCAST_DRIVER should be redis for development.
 
-Service hostname variables need to match the hostnames inside the container network environemnt so
+Service hostname variables need to match the hostnames inside the container network environment so:
 
-`REDIS_HOST=redis`
+```
+REDIS_HOST=redis
+REDIS_CLIENT=predis # predis is the client for this demo
+```
 `DB_HOST=mysqldb`
 
 __note__: This is assuming Docker and Docker-Composer are installed and this is a Unix machine
