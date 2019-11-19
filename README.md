@@ -24,7 +24,8 @@ __note__: This is assuming Docker and Docker-Composer are installed and this is 
 git clone https://github.com/jbool24/laravel6-demo.git
 ```
 
-### 2. Install dev dependencies (composer and npm/yarn must be installed)
+### 2. (Optional) Manual Install dev dependencies (composer and npm/yarn must be installed)
+  __note__: laravel container will auto install js and php dependencies on first run if they are not present.
   ```bash
   cd laravel && npm install && composer install && npm run prod
   ```
