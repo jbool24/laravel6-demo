@@ -62,14 +62,14 @@ git clone https://github.com/jbool24/laravel6-demo.git
 ### 5. Run migrations to prime the DB
 
   ```bash
-  cd laravel # if not located in /laravel/ dir
+  cd laravel # if current working dir not /laravel/
   npm run migrate
   ```
 
   -or-
 
   ```bash
-  cd laravel # if not located in /laravel/ dir
+  cd laravel # if current working dir not /laravel/
   npm run migrate
   ```
 
