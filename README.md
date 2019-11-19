@@ -70,7 +70,7 @@ git clone https://github.com/jbool24/laravel6-demo.git
 
   ```bash
   cd laravel # if current working dir not /laravel/
-  npm run migrate
+  yarn migrate
   ```
 
 ### 6. Stop and cleanup
