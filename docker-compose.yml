@@ -39,6 +39,9 @@ services:
     volumes:
       - ./laravel:/var/www/laravel:rw
       - ./containers/nginx/supervisord.conf:/etc/supervisord.conf
+    depends_on:
+      - redis
+      - laravel
     container_name: dev_nginx
 
   redis:
