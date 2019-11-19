@@ -20,6 +20,7 @@ services:
       - ./containers/laravel/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - mysqldb
+      - redis
     container_name: dev_laravel
   
   nginx:
