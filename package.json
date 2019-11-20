@@ -9,7 +9,7 @@
     "stop": "docker-compose down --rmi local",
     "ps": "docker-compose ps",
     "peek": "docker-compose logs -f",
-    "console": "docker-compose exec --user www-data laravel /bin/ash"
+    "console": "docker-compose exec --user www-data laravel /bin/ash",
     "migrate": "cd ./laravel && yarn migrate"
   }
 }
