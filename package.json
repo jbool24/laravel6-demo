@@ -10,6 +10,8 @@
     "ps": "docker-compose ps",
     "peek": "docker-compose logs -f",
     "console": "docker-compose exec --user www-data laravel /bin/ash",
-    "migrate": "cd ./laravel && yarn migrate"
+    "migrate": "docker-compose exec laravel php artisan migrate",
+    "generate-key": "docker-compose exec laravel php artisan key:generate",
+    "reset-servers": "docker-compose exec nginx supervisorctl restart all"
   }
 }
