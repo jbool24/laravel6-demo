@@ -10,5 +10,6 @@
     "ps": "docker-compose ps",
     "peek": "docker-compose logs -f",
     "console": "docker-compose exec --user www-data laravel /bin/ash"
+    "migrate": "cd ./laravel && yarn migrate"
   }
 }
