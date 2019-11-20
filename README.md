@@ -62,14 +62,12 @@ git clone https://github.com/jbool24/laravel6-demo.git
 ### 5. Run migrations to prime the DB
 
   ```bash
-  cd laravel # if current working dir not /laravel/
   npm run db:migrate && npm run app:genKey
   ```
 
   -or-
 
   ```bash
-  cd laravel # if current working dir not /laravel/
   yarn db:migrate && yarn app:genKey
   ```
 __note__ if broadcast updates not working try running `yarn app:reset-servers` to restart nginx and socket server.
