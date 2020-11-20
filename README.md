@@ -1,8 +1,16 @@
 # Laravel 6 Core Concepts Demo
 
+This demo is meant to demonstrate several understandings:
+- General understanding of PHP7 and OOP programming.
+- Infrastructure and Ops with docker and bash scripts.
+- Server management and configuration with Nginx Web Server and supervisor process manager.
+- Web Socket subscriptions for passing real-time messages between clients via a server.
+- The Laravel 6 framework and project structure in general.
+- Authentication gated pages in web applications.
+- External data sourcing via ajax network calls.
 
 
-To test this demo do the following:
+To test this demo in full locally follow the steps below:
 
 You must have a __.env__ file in the /laravel/ directory to inform laravel about the DB connections
 and the BROADCAST_DRIVER should be redis for development.
